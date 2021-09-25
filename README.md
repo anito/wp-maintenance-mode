@@ -11,3 +11,4 @@ Test v3.1.8
 Test v3.1.9
 Test v3.2.0
 Test v3.2.1
+Test v3.2.2
