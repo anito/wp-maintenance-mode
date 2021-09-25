@@ -1,6 +1,5 @@
 # wp-maintenance-mode
 
-Test v4
 Test v3.1.2
 Test v3.1.3
 Test v3.1.4
@@ -18,3 +17,4 @@ Test v3.2.5
 Test v3.2.6
 Test v3.3.0
 Test v3.3.1
+Test v3.3.2
