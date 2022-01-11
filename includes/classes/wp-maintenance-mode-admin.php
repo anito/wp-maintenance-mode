@@ -332,7 +332,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
                         // BACKGROUND & CUSTOM CSS
                         if (!empty($_POST['options']['design']['bg_overlay_color'])) {
                           $_POST['options']['design']['bg_overlay_color'] = sanitize_text_field($_POST['options']['design']['bg_overlay_color']);
-                          $custom_css['bg_overlay_color'] = 'body { background-color: ' . $_POST['options']['design']['bg_overlay_color'] . '; }';
+                          $custom_css['bg_overlay_color'] = 'body:after { background-color: ' . $_POST['options']['design']['bg_overlay_color'] . '; }';
                         }
                         if (!empty($_POST['options']['design']['bg_type'])) {
                             $_POST['options']['design']['bg_type'] = sanitize_text_field($_POST['options']['design']['bg_type']);
