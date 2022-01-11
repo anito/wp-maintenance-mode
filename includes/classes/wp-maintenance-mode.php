@@ -5,7 +5,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
     class WP_Maintenance_Mode
     {
 
-        const VERSION = '2.2';
+        const VERSION = '22';
 
         protected $plugin_slug = 'wp-maintenance-mode';
         protected $plugin_settings;
@@ -106,7 +106,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
                 'design' => array(
                     'title' => __('Maintenance mode', $this->plugin_slug),
                     'heading' => __('Maintenance mode', $this->plugin_slug),
-                    'heading_color' => '',
+                    'heading_color' => '#ffffff',
                     'text' => __('<p>Sorry for the inconvenience.<br />Our website is currently undergoing scheduled maintenance.<br />Thank you for your understanding.</p>', $this->plugin_slug),
                     'text_color' => '',
                     'credits' => '<span>' . __('Credits') . ':</span>',
@@ -115,6 +115,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
                     'bg_color' => '',
                     'bg_custom' => '',
                     'bg_predefined' => 'bg1.jpg',
+                    'bg_overlay_color' => '#000000a0',
                     'custom_css' => array(),
                 ),
                 'modules' => array(
@@ -579,7 +580,8 @@ if (!class_exists('WP_Maintenance_Mode')) {
                 );
                 if (!empty($this->plugin_settings['modules']['countdown_status']) && $this->plugin_settings['modules']['countdown_status'] == 1) {
                     $scripts['countdown-dependency'] = WPMM_JS_URL . 'jquery.plugin' . WPMM_ASSETS_SUFFIX . '.js';
-                    $scripts['countdown'] = WPMM_JS_URL . 'jquery.countdown' . WPMM_ASSETS_SUFFIX . '.js';
+                    // $scripts['countdown'] = WPMM_JS_URL . 'jquery.countdown' . WPMM_ASSETS_SUFFIX . '.js';
+                    $scripts['countdown'] = WPMM_JS_URL . 'timer' . WPMM_ASSETS_SUFFIX . '.js';
                 }
                 if ((!empty($this->plugin_settings['modules']['contact_status']) && $this->plugin_settings['modules']['contact_status'] == 1)
                     || (!empty($this->plugin_settings['modules']['subscribe_status']) && $this->plugin_settings['modules']['subscribe_status'] == 1)

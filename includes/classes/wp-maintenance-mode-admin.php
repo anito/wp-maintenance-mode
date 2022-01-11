@@ -79,7 +79,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
                 wp_enqueue_style($this->plugin_slug . '-admin-chosen', WPMM_CSS_URL . 'chosen' . WPMM_ASSETS_SUFFIX . '.css', array(), WP_Maintenance_Mode::VERSION);
                 wp_enqueue_style($this->plugin_slug . '-admin-timepicker-addon-script', WPMM_CSS_URL . 'jquery-ui-timepicker-addon' . WPMM_ASSETS_SUFFIX . '.css', array(), WP_Maintenance_Mode::VERSION);
                 wp_enqueue_style($this->plugin_slug . '-admin-styles', WPMM_CSS_URL . 'style-admin' . WPMM_ASSETS_SUFFIX . '.css', array('wp-color-picker'), WP_Maintenance_Mode::VERSION);
-            }
+              }
         }
 
         /**
@@ -99,6 +99,12 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
                 wp_enqueue_media();
                 wp_enqueue_script($this->plugin_slug . '-admin-timepicker-addon-script', WPMM_JS_URL . 'jquery-ui-timepicker-addon' . WPMM_ASSETS_SUFFIX . '.js', array('jquery', 'jquery-ui-datepicker'), WP_Maintenance_Mode::VERSION);
                 wp_enqueue_script($this->plugin_slug . '-admin-script', WPMM_JS_URL . 'scripts-admin' . WPMM_ASSETS_SUFFIX . '.js', array('jquery', 'wp-color-picker'), WP_Maintenance_Mode::VERSION);
+                wp_enqueue_script($this->plugin_slug . '-admin-color-picker-alpha', WPMM_JS_URL . 'wp-color-picker-alpha' . WPMM_ASSETS_SUFFIX . '.js', array('wp-color-picker'), WP_Maintenance_Mode::VERSION);
+                wp_add_inline_script(
+                  $this->plugin_slug . '-admin-color-picker-alpha',
+                  'jQuery( function() { jQuery( ".color-picker" ).wpColorPicker(); } );'
+                );
+                
                 wp_enqueue_script($this->plugin_slug . '-admin-chosen', WPMM_JS_URL . 'chosen.jquery' . WPMM_ASSETS_SUFFIX . '.js', array(), WP_Maintenance_Mode::VERSION);
                 wp_localize_script($this->plugin_slug . '-admin-script', 'wpmm_vars', array(
                     'ajax_url' => admin_url('admin-ajax.php'),
@@ -228,7 +234,11 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
         public function add_plugin_menu()
         {
             $this->plugin_screen_hook_suffix = add_options_page(
-                __('WP Maintenance Mode', $this->plugin_slug), __('WP Maintenance Mode', $this->plugin_slug), 'manage_options', $this->plugin_slug, array($this, 'display_plugin_settings')
+                __('WP Maintenance Mode', $this->plugin_slug),
+                __('WP Maintenance Mode', $this->plugin_slug),
+                'manage_options',
+                $this->plugin_slug,
+                array($this, 'display_plugin_settings')
             );
         }
 
@@ -320,6 +330,10 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
                         }
 
                         // BACKGROUND & CUSTOM CSS
+                        if (!empty($_POST['options']['design']['bg_overlay_color'])) {
+                          $_POST['options']['design']['bg_overlay_color'] = sanitize_text_field($_POST['options']['design']['bg_overlay_color']);
+                          $custom_css['bg_overlay_color'] = 'body { background-color: ' . $_POST['options']['design']['bg_overlay_color'] . '; }';
+                        }
                         if (!empty($_POST['options']['design']['bg_type'])) {
                             $_POST['options']['design']['bg_type'] = sanitize_text_field($_POST['options']['design']['bg_type']);
 
@@ -358,7 +372,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
                         $_POST['options']['modules']['countdown_details']['minutes'] = isset($_POST['options']['modules']['countdown_details']['minutes']) && is_numeric($_POST['options']['modules']['countdown_details']['minutes']) ? $_POST['options']['modules']['countdown_details']['minutes'] : 0;
                         if (!empty($_POST['options']['modules']['countdown_color'])) {
                             $_POST['options']['modules']['countdown_color'] = sanitize_text_field($_POST['options']['modules']['countdown_color']);
-                            $custom_css['countdown_color'] = '.wrap .countdown span { color: ' . $_POST['options']['modules']['countdown_color'] . '; }';
+                            $custom_css['countdown_color'] = '.wrap .timer { color: ' . $_POST['options']['modules']['countdown_color'] . '; }';
                         }
 
                         // SUBSCRIBE & CUSTOM CSS
@@ -546,7 +560,8 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             return array_merge(
                 array(
                     'wpmm_settings' => '<a href="' . admin_url('options-general.php?page=' . $this->plugin_slug) . '">' . __('Settings', $this->plugin_slug) . '</a>',
-                ), $links
+                ),
+                $links
             );
         }
 
@@ -693,7 +708,5 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
                 return __("No privacy features detected for your WordPress version. Update WordPress to get this field automatically filled in or type in the URL that points to your privacy policy page.", $this->plugin_slug);
             }
         }
-
     }
-
 }
