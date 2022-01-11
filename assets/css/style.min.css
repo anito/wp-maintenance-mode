@@ -159,6 +159,7 @@ h1 {
 .footer a:active,
 .footer a:hover {
   text-decoration: none;
+  color: #fff;
 }
 .footer__bg_copyright {
   position: absolute;
