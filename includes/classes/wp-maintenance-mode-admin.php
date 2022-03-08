@@ -11,7 +11,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
         protected $_plugin_default_settings;
         protected $_plugin_basename;
         protected $_plugin_screen_hook_suffix = null;
-        private $__dismissed_notices_key = 'wpmm_dismissed_notices';
+        private $dismissed_notices_key = 'wpmm_dismissed_notices';
 
         private function __construct()
         {
