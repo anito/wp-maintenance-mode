@@ -114,7 +114,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
           'bg_type' => 'color',
           'bg_color' => '',
           'bg_custom' => '',
-          'bg_predefined' => 'bg1.jpg',
+          'bg_predefined' => '',
           'bg_overlay_color' => '#000000a0',
           'custom_css' => array(),
         ),
@@ -897,8 +897,12 @@ if (!class_exists('WP_Maintenance_Mode')) {
         $message = ob_get_clean();
 
         // filters
-        add_filter('wp_mail_content_type', create_function('', 'return "text/html";'));
-        add_filter('wp_mail_from_name', create_function('', 'return sanitize_text_field($_POST["name"]);'));
+        add_filter('wp_mail_content_type', function() {
+          return "text/html";
+        });
+        add_filter('wp_mail_from_name', function() {
+          return sanitize_text_field($_POST["name"]);
+        });
 
         // send email
         @wp_mail($send_to, $subject, $message, $headers);

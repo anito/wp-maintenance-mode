@@ -51,8 +51,6 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 300;
-  /*background-image: url(images/bg.jpg) !important;*/
-  /*background-repeat: no-repeat;*/
   background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
