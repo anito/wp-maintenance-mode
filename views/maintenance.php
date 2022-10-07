@@ -103,7 +103,7 @@ $social_prefix = 'social_';
   <footer class="footer">
     <div class="footer__bg_copyright"><?php echo $credits; ?></div>
     <div class="footer__content">
-      <?php printf(__('%1$s is powered by %2$s', $this->plugin_slug),  get_bloginfo('name'), $this->get_creator(true)); ?>
+      <?php printf(__('%1$s powered by %2$s', $this->plugin_slug),  get_bloginfo('name'), $this->get_creator(true)); ?>
     </div>
   </footer>
   <script type='text/javascript'>
