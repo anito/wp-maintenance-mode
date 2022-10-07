@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Maintenance Mode 2.1.1\n"
 "POT-Creation-Date: 2018-03-02 10:25+0100\n"
-"PO-Revision-Date: 2022-10-07 12:55+0000\n"
+"PO-Revision-Date: 2022-10-07 15:56+0000\n"
 "Last-Translator: admin\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -21,6 +21,12 @@ msgstr ""
 "X-Poedit-SearchPath-2: .\n"
 "Report-Msgid-Bugs-To: \n"
 "X-Loco-Version: 2.6.2; wp-6.0.2"
+
+msgid "%1$s is powered by"
+msgstr ""
+
+msgid "%1$s is powered by %2$s"
+msgstr "%1$s test %2$s"
 
 #: views/settings.php:562 views/settings.php:586 views/settings.php:594
 msgid "(click on button one)"
@@ -43,9 +49,6 @@ msgstr ""
 #: views/settings.php:27 views/settings.php:457
 msgid "Activated"
 msgstr "Aktiv"
-
-msgid "Additional Infos"
-msgstr "Zusätzliche Informationen"
 
 #: includes/classes/wp-maintenance-mode.php:818
 msgid "All fields required."
@@ -316,6 +319,9 @@ msgid ""
 "It is also ok if you don't fill in all the conversation steps if you don't "
 "need to."
 msgstr ""
+
+msgid "Link to website"
+msgstr "Link zur Website"
 
 #: views/settings.php:323
 msgid "Links target?"
@@ -671,15 +677,16 @@ msgid ""
 "best designed and coded WordPress Themes."
 msgstr ""
 
+msgid "Webdesigner Infos"
+msgstr "Webdesigner Infos in der Fusszeile"
+
+#: views/sidebar.php:14
 msgid "Website"
 msgstr "Webseite"
 
 #: includes/classes/wp-maintenance-mode.php:147
 msgid "What is your name?"
 msgstr ""
-
-msgid "Where the Creators Logo should be linked to"
-msgstr "Link zur Webseite des Webdesigners"
 
 #: views/settings.php:54
 msgid ""

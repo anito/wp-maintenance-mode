@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Maintenance Mode 2.2.4\n"
-"POT-Creation-Date: 2022-10-07 12:56+0000\n"
+"POT-Creation-Date: 2022-10-07 15:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Axel Nitzschner <info@webpremiere.dev>\n"
 "Language-Team: Deutsch\n"
@@ -751,8 +751,14 @@ msgstr ""
 msgid "Company name used for alt attribute"
 msgstr ""
 
-msgid "Additional Infos"
+msgid "Webdesigner Infos"
 msgstr ""
 
-msgid "Where the Logo should be linked to"
+msgid "Link to website"
+msgstr ""
+
+msgid "%1$s is powered by %2$s"
+msgstr ""
+
+msgid "%s is powered by %s"
 msgstr ""

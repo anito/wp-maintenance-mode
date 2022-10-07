@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Maintenance Mode 2.2.4\n"
-"POT-Creation-Date: 2022-10-07 12:54+0000\n"
+"POT-Creation-Date: 2022-10-07 14:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Axel Nitzschner <info@webpremiere.dev>\n"
 "Language-Team: Deutsch\n"
@@ -724,16 +724,10 @@ msgstr ""
 msgid "Overlay Color"
 msgstr ""
 
-msgid "Website"
-msgstr ""
-
 msgid "Image Source"
 msgstr ""
 
 msgid "Target Window"
-msgstr ""
-
-msgid "Where the Creators Logo should be linked to"
 msgstr ""
 
 msgid "Assign an external image source"
@@ -757,5 +751,11 @@ msgstr ""
 msgid "Company name used for alt attribute"
 msgstr ""
 
-msgid "Additional Infos"
+msgid "Webdesigner Infos"
+msgstr ""
+
+msgid "Link to website"
+msgstr ""
+
+msgid "%1$s is powered by %2$s"
 msgstr ""

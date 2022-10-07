@@ -13,7 +13,7 @@
  * GitHub Branch: master
  * Text Domain: wp-maintenance-mode
  * License: GPL-2.0+
- * Domain Path: /languages
+ * Domain Path: languages
  */
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
