@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Maintenance Mode 2.1.1\n"
 "POT-Creation-Date: 2018-03-02 10:25+0100\n"
-"PO-Revision-Date: 2022-10-07 14:23+0000\n"
+"PO-Revision-Date: 2022-10-07 14:09+0000\n"
 "Last-Translator: admin\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -21,9 +21,6 @@ msgstr ""
 "X-Poedit-SearchPath-2: .\n"
 "Report-Msgid-Bugs-To: \n"
 "X-Loco-Version: 2.6.2; wp-6.0.2"
-
-msgid "%1$s is powered by %2$s"
-msgstr "%1$s wird präsentiert von %2$s"
 
 #: views/settings.php:562 views/settings.php:586 views/settings.php:594
 msgid "(click on button one)"
@@ -675,7 +672,7 @@ msgid ""
 msgstr ""
 
 msgid "Webdesigner Infos"
-msgstr "Webdesigner Infos in der Fusszeile"
+msgstr "Webdesigner Infos"
 
 #: views/sidebar.php:14
 msgid "Website"

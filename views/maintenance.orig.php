@@ -12,7 +12,7 @@
   if (!empty($styles) && is_array($styles)) {
     foreach ($styles as $src) {
   ?>
-      <link rel="stylesheet"  data href="<?php echo $src; ?>">
+      <link rel="stylesheet" data href="<?php echo $src; ?>">
   <?php
     }
   }
@@ -125,7 +125,7 @@
       <?php list($open, $close) = !empty($this->plugin_settings['modules']['contact_effects']) && strstr($this->plugin_settings['modules']['contact_effects'], '|') ? explode('|', $this->plugin_settings['modules']['contact_effects']) : explode('|', 'move_top|move_bottom'); ?>
       <div class="form <?php echo esc_attr($open); ?>">
         <span class="close-contact_form">
-          <img src="<?php echo WPMM_URL ?>assets/images/close.svg" alt="">
+          <img src="<?php echo WEBPR_MM__URL ?>assets/images/close.svg" alt="">
         </span>
 
         <form class="contact_form">

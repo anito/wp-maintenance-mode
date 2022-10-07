@@ -157,19 +157,17 @@ h1 {
 .footer a:active,
 .footer a:hover {
   text-decoration: none;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
 }
 .footer__bg_copyright {
   position: absolute;
-  top: -2em;
   left: 1em;
 }
 .footer__content {
   margin: auto;
   padding: 13px 40px;
-  max-width: 1200px;
   text-align: right;
-  color: rgba(255, 255, 255, 0.5);
 }
 .footer .logo {
   height: 24px;

@@ -27,18 +27,20 @@ $social_prefix = 'social_';
   if (!empty($styles) && is_array($styles)) {
     foreach ($styles as $src) {
   ?>
-  <link rel="stylesheet" data href="<?php echo $src; ?>">
+      <link rel="stylesheet" data href="<?php echo $src; ?>">
     <?php
     }
   }
   if (!empty($custom_css) && is_array($custom_css)) { ?>
-    <style><?php echo implode(array_map('stripslashes', $custom_css)) ?></style>
-  <?php
+    <style>
+      <?php echo implode(array_map('stripslashes', $custom_css)) ?>
+    </style>
+    <?php
   }
   if (!empty($scripts) && is_array($scripts)) {
     foreach ($scripts as $src) {
     ?>
-  <script src="<?php echo $src; ?>"></script>
+      <script src="<?php echo $src; ?>"></script>
   <?php
     }
   }
@@ -101,7 +103,7 @@ $social_prefix = 'social_';
   <footer class="footer">
     <div class="footer__bg_copyright"><?php echo $credits; ?></div>
     <div class="footer__content">
-      <?php printf(__('%1$s is proudly powered by %2$s'), get_bloginfo('name'), $this->get_creator(true)); ?>
+      <?php printf(__('%1$s is powered by %2$s', $this->plugin_slug), get_bloginfo('name'), $this->get_creator(true)); ?>
     </div>
   </footer>
   <script type='text/javascript'>

@@ -13,8 +13,6 @@
         <a class="nav-tab nav-tab-active" href="#general"><?php _e('General', $this->plugin_slug); ?></a>
         <a class="nav-tab" href="#design"><?php _e('Design', $this->plugin_slug); ?></a>
         <a class="nav-tab" href="#modules"><?php _e('Modules', $this->plugin_slug); ?></a>
-        <a class="nav-tab" href="#bot"><?php _e('Manage Bot', $this->plugin_slug); ?></a>
-        <a class="nav-tab" href="#gdpr"><?php _e('GDPR', $this->plugin_slug); ?></a>
       </div>
 
       <div class="tabs-content">
@@ -224,20 +222,20 @@
                   <th scope="row">
                     <label for="options[design][bg_predefined]"><?php _e('Choose background', $this->plugin_slug); ?></label>
                     <p class="description">
-                      * <?php echo sprintf(__('source <a href="%s" target="_blank">Free Photos</a>', $this->plugin_slug), 'http://designmodo.com/free-photos/' . WPMM_AUTHOR_UTM); ?>
+                      * <?php echo sprintf(__('source <a href="%s" target="_blank">Free Photos</a>', $this->plugin_slug), 'http://designmodo.com/free-photos/' . WEBPR_MM__AUTHOR_UTM); ?>
                     </p>
                   </th>
                   <td>
                     <ul class="bg_list">
                       <?php
-                      foreach (glob(WPMM_PATH . 'assets/images/backgrounds/*_thumb.jpg') as $filename) {
+                      foreach (glob(WEBPR_MM__PATH . 'assets/images/backgrounds/*_thumb.jpg') as $filename) {
                         $file_thumb = basename($filename);
                         $file = str_replace('_thumb', '', $file_thumb);
                       ?>
                         <li class="<?php echo $this->plugin_settings['design']['bg_predefined'] == $file ? 'active' : ''; ?>">
                           <label>
                             <input type="radio" value="<?php echo esc_attr($file); ?>" name="options[design][bg_predefined]" <?php checked($this->plugin_settings['design']['bg_predefined'], $file); ?>>
-                            <img src="<?php echo WPMM_URL . 'assets/images/backgrounds/' . $file_thumb; ?>" width="200" height="150" />
+                            <img src="<?php echo WEBPR_MM__URL . 'assets/images/backgrounds/' . $file_thumb; ?>" width="200" height="150" />
                           </label>
                         </li>
                       <?php
@@ -249,37 +247,38 @@
               </tbody>
             </table>
 
-            <h3>&raquo; <?php _e('Website Creator', $this->plugin_slug); ?></h3>
+            <h3>&raquo; <?php _e('Webdesigner Infos', $this->plugin_slug); ?></h3>
 
             <table class="form-table">
               <tbody>
                 <tr>
-                  <th scope="row"><label for="options[design][creator_alt]"><?php _e('Company Name', $this->plugin_slug); ?></label></th>
+                  <th scope="row"><label for="options[design][info_alt]"><?php _e('Company Name', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['creator_alt'])); ?>" name="options[design][creator_alt]" class="" />
+                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['info_alt'])); ?>" name="options[design][info_alt]" class="" />
                     <p class="description"><?php _e('Company name used for alt attribute', $this->plugin_slug); ?></p>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row"><label for="options[design][creator_href]"><?php _e('Creators Website Url', $this->plugin_slug); ?></label></th>
+                  <th scope="row"><label for="options[design][info_logo_src]"><?php _e('Image Source', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['creator_href'])); ?>" name="options[design][creator_href]" class="" />
-                    <p class="description"><?php _e('Where the Creators Logo should be linked to', $this->plugin_slug); ?></p>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><label for="options[design][creator_src]"><?php _e('Image Source', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['creator_src'])); ?>" name="options[design][creator_src]" class="" />
+                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['info_logo_src'])); ?>" name="options[design][info_logo_src]" class="upload_logo_url" />
+                    <input type="button" value="Upload" class="button" id="upload_logo_trigger" />
                     <p class="description"><?php _e('Assign an external image source', $this->plugin_slug); ?></p>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row"><label for="options[design][creator_target]"><?php _e('Target Window', $this->plugin_slug); ?></label></th>
+                  <th scope="row"><label for="options[design][info_src]"><?php _e('Website', $this->plugin_slug); ?></label></th>
                   <td>
-                    <select name="options[design][creator_target]">
-                      <option value="_blank" <?php selected($this->plugin_settings['design']['creator_target'], '_blank'); ?>><?php _e('New window', $this->plugin_slug); ?></option>
-                      <option value="_self" <?php selected($this->plugin_settings['design']['creator_target'], '_self'); ?>><?php _e('Same window', $this->plugin_slug); ?></option>
+                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['info_src'])); ?>" name="options[design][info_src]" class="" />
+                    <p class="description"><?php _e('Link to website', $this->plugin_slug); ?></p>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><label for="options[design][info_target]"><?php _e('Target Window', $this->plugin_slug); ?></label></th>
+                  <td>
+                    <select name="options[design][info_target]">
+                      <option value="_blank" <?php selected($this->plugin_settings['design']['info_target'], '_blank'); ?>><?php _e('New window', $this->plugin_slug); ?></option>
+                      <option value="_self" <?php selected($this->plugin_settings['design']['info_target'], '_self'); ?>><?php _e('Same window', $this->plugin_slug); ?></option>
                     </select>
                     <p class="description"><?php _e('Choose target window', $this->plugin_slug); ?></p>
                   </td>
@@ -326,167 +325,6 @@
                   <th scope="row"><label for="options[modules][countdown_color]"><?php _e('Color', $this->plugin_slug); ?></label></th>
                   <td>
                     <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['countdown_color'])); ?>" name="options[modules][countdown_color]" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['countdown_color'])); ?>" class="color_picker_trigger" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>&raquo; <?php _e('Subscribe', $this->plugin_slug); ?></h3>
-
-            <table class="form-table">
-              <tbody>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][subscribe_status]"><?php _e('Show subscribe?', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <select name="options[modules][subscribe_status]">
-                      <option value="1" <?php selected($this->plugin_settings['modules']['subscribe_status'], 1); ?>><?php _e('Yes', $this->plugin_slug); ?></option>
-                      <option value="0" <?php selected($this->plugin_settings['modules']['subscribe_status'], 0); ?>><?php _e('No', $this->plugin_slug); ?></option>
-                    </select>
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][subscribe_text]"><?php _e('Text', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['subscribe_text'])); ?>" name="options[modules][subscribe_text]" />
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['subscribe_text_color'])); ?>" name="options[modules][subscribe_text_color]" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['subscribe_text_color'])); ?>" class="color_picker_trigger" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][stats]"><?php _e('Stats', $this->plugin_slug); ?></label></th>
-                  <td id="subscribers_wrap">
-                    <?php
-                    $subscribers_no = wpmm_count_where('wpmm_subscribers', 'id_subscriber');
-                    echo sprintf(__('You have %d subscriber(s)', $this->plugin_slug), $subscribers_no);
-
-                    if ($subscribers_no > 0) {
-                    ?>
-                      <br />
-                      <a class="button button-primary" id="subscribers-export" href="javascript:void(0);"><?php _e('Export as CSV', $this->plugin_slug); ?></a>
-                      <a class="button button-secondary" id="subscribers-empty-list" href="javascript:void(0);"><?php _e('Empty subscribers list', $this->plugin_slug); ?></a>
-                    <?php } ?>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>&raquo; <?php _e('Social Networks', $this->plugin_slug); ?></h3>
-
-            <table class="form-table">
-              <tbody>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_status]"><?php _e('Show social networks?', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <select name="options[modules][social_status]">
-                      <option value="1" <?php selected($this->plugin_settings['modules']['social_status'], 1); ?>><?php _e('Yes', $this->plugin_slug); ?></option>
-                      <option value="0" <?php selected($this->plugin_settings['modules']['social_status'], 0); ?>><?php _e('No', $this->plugin_slug); ?></option>
-                    </select>
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_target]"><?php _e('Links target?', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <select name="options[modules][social_target]">
-                      <option value="1" <?php selected($this->plugin_settings['modules']['social_target'], 1); ?>><?php _e('New page', $this->plugin_slug); ?></option>
-                      <option value="0" <?php selected($this->plugin_settings['modules']['social_target'], 0); ?>><?php _e('Same page', $this->plugin_slug); ?></option>
-                    </select>
-                    <p class="description"><?php _e('Choose how the links will open.', $this->plugin_slug); ?></p>
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_github]">Github</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_github'])); ?>" name="options[modules][social_github]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_dribbble]">Dribbble</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_dribbble'])); ?>" name="options[modules][social_dribbble]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_twitter]">Twitter</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_twitter'])); ?>" name="options[modules][social_twitter]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_facebook]">Facebook</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_facebook'])); ?>" name="options[modules][social_facebook]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_pinterest]">Pinterest</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_pinterest'])); ?>" name="options[modules][social_pinterest]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_google+]">Google+</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_google+'])); ?>" name="options[modules][social_google+]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][social_linkedin]">Linkedin</label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['social_linkedin'])); ?>" name="options[modules][social_linkedin]" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>&raquo; <?php _e('Contact', $this->plugin_slug); ?></h3>
-
-            <table class="form-table">
-              <tbody>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][contact_status]"><?php _e('Show contact?', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <select name="options[modules][contact_status]">
-                      <option value="1" <?php selected($this->plugin_settings['modules']['contact_status'], 1); ?>><?php _e('Yes', $this->plugin_slug); ?></option>
-                      <option value="0" <?php selected($this->plugin_settings['modules']['contact_status'], 0); ?>><?php _e('No', $this->plugin_slug); ?></option>
-                    </select>
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][contact_email]"><?php _e('Email address', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['contact_email'])); ?>" name="options[modules][contact_email]" />
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][contact_effects]"><?php _e('Effects', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <select name="options[modules][contact_effects]">
-                      <option value="move_top|move_bottom" <?php selected($this->plugin_settings['modules']['contact_effects'], 'move_top|move_bottom'); ?>><?php _e('Move top - Move bottom', $this->plugin_slug); ?></option>
-                      <option value="zoom|zoomed" <?php selected($this->plugin_settings['modules']['contact_effects'], 'zoom|zoomed'); ?>><?php _e('Zoom - Zoomed', $this->plugin_slug); ?></option>
-                      <option value="fold|unfold" <?php selected($this->plugin_settings['modules']['contact_effects'], 'fold|unfold'); ?>><?php _e('Fold - Unfold', $this->plugin_slug); ?></option>
-                    </select>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3>&raquo; <?php _e('Google Analytics', $this->plugin_slug); ?></h3>
-
-            <table class="form-table">
-              <tbody>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][ga_status]"><?php _e('Use Google Analytics?', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <select name="options[modules][ga_status]">
-                      <option value="1" <?php selected($this->plugin_settings['modules']['ga_status'], 1); ?>><?php _e('Yes', $this->plugin_slug); ?></option>
-                      <option value="0" <?php selected($this->plugin_settings['modules']['ga_status'], 0); ?>><?php _e('No', $this->plugin_slug); ?></option>
-                    </select>
-                  </td>
-                </tr>
-                <tr valign="top">
-                  <th scope="row"><label for="options[modules][ga_code]"><?php _e('Tracking code', $this->plugin_slug); ?></label></th>
-                  <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['ga_code'])); ?>" name="options[modules][ga_code]" />
-                    <p class="description"><?php _e('Allowed formats: UA-XXXXXXXX, UA-XXXXXXXX-XXXX. Eg: UA-12345678-1 is valid', $this->plugin_slug); ?></p>
                   </td>
                 </tr>
               </tbody>

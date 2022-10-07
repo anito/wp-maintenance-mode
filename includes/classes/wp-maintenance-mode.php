@@ -5,7 +5,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
   class WP_Maintenance_Mode
   {
 
-    const VERSION = '22';
+    const VERSION = '3.0.3';
 
     protected $plugin_slug = 'wp-maintenance-mode';
     protected $plugin_settings;
@@ -15,7 +15,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
     private function __construct()
     {
       $this->plugin_settings = get_option('wpmm_settings');
-      $this->plugin_basename = plugin_basename(WPMM_PATH . $this->plugin_slug . '.php');
+      $this->plugin_basename = plugin_basename(WEBPR_MM__PATH . $this->plugin_slug . '.php');
 
       // Load plugin text domain
       add_action('init', array($this, 'load_plugin_textdomain'));
@@ -190,7 +190,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
     public static function activate($network_wide)
     {
       // because we need translated items when activate :)
-      load_plugin_textdomain(self::get_instance()->plugin_slug, false, WPMM_LANGUAGES_PATH);
+      load_plugin_textdomain(self::get_instance()->plugin_slug, false, WEBPR_MM__LANGUAGES_PATH);
 
       // do the job
       if (function_exists('is_multisite') && is_multisite()) {
@@ -490,7 +490,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
       $locale = apply_filters('plugin_locale', get_locale(), $domain);
 
       load_textdomain($domain, trailingslashit(WP_LANG_DIR) . $domain . '/' . $domain . '-' . $locale . '.mo');
-      load_plugin_textdomain($domain, false, WPMM_LANGUAGES_PATH);
+      load_plugin_textdomain($domain, false, WEBPR_MM__LANGUAGES_PATH);
     }
 
     /**
@@ -575,32 +575,32 @@ if (!class_exists('WP_Maintenance_Mode')) {
         $wp_scripts = wp_scripts();
 
         $scripts = array(
-          'jquery' => !empty($wp_scripts->registered['jquery-core']) ? site_url($wp_scripts->registered['jquery-core']->src) : '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery' . WPMM_ASSETS_SUFFIX . '.js',
-          'frontend' => WPMM_JS_URL . 'scripts' . WPMM_ASSETS_SUFFIX . '.js',
+          'jquery' => !empty($wp_scripts->registered['jquery-core']) ? site_url($wp_scripts->registered['jquery-core']->src) : '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery' . WEBPR_MM__ASSETS_SUFFIX . '.js',
+          'frontend' => WEBPR_MM__JS_URL . 'scripts' . WEBPR_MM__ASSETS_SUFFIX . '.js',
         );
         if (!empty($this->plugin_settings['modules']['countdown_status']) && $this->plugin_settings['modules']['countdown_status'] == 1) {
-          $scripts['countdown-dependency'] = WPMM_JS_URL . 'jquery.plugin' . WPMM_ASSETS_SUFFIX . '.js';
-          // $scripts['countdown'] = WPMM_JS_URL . 'jquery.countdown' . WPMM_ASSETS_SUFFIX . '.js';
-          $scripts['countdown'] = WPMM_JS_URL . 'timer' . WPMM_ASSETS_SUFFIX . '.js';
+          $scripts['countdown-dependency'] = WEBPR_MM__JS_URL . 'jquery.plugin' . WEBPR_MM__ASSETS_SUFFIX . '.js';
+          // $scripts['countdown'] = WEBPR_MM__JS_URL . 'jquery.countdown' . WEBPR_MM__ASSETS_SUFFIX . '.js';
+          $scripts['countdown'] = WEBPR_MM__JS_URL . 'timer' . WEBPR_MM__ASSETS_SUFFIX . '.js';
         }
         if ((!empty($this->plugin_settings['modules']['contact_status']) && $this->plugin_settings['modules']['contact_status'] == 1)
           || (!empty($this->plugin_settings['modules']['subscribe_status']) && $this->plugin_settings['modules']['subscribe_status'] == 1)
           || (!empty($this->plugin_settings['bot']['status']) && $this->plugin_settings['bot']['status'] == 1)
         ) {
-          $scripts['validate'] = WPMM_JS_URL . 'jquery.validate' . WPMM_ASSETS_SUFFIX . '.js';
+          $scripts['validate'] = WEBPR_MM__JS_URL . 'jquery.validate' . WEBPR_MM__ASSETS_SUFFIX . '.js';
         }
         if (!empty($this->plugin_settings['bot']['status']) && $this->plugin_settings['bot']['status'] == 1) {
-          $scripts['bot'] = WPMM_JS_URL . 'bot' . WPMM_ASSETS_SUFFIX . '.js';
+          $scripts['bot'] = WEBPR_MM__JS_URL . 'bot' . WEBPR_MM__ASSETS_SUFFIX . '.js';
           add_action('wpmm_before_scripts', array($this, 'add_bot_extras'));
         }
         $scripts = apply_filters('wpmm_scripts', $scripts);
 
         // CSS FILES
         $styles = array(
-          'frontend' => WPMM_CSS_URL . 'style' . WPMM_ASSETS_SUFFIX . '.css',
+          'frontend' => WEBPR_MM__CSS_URL . 'style' . WEBPR_MM__ASSETS_SUFFIX . '.css',
         );
         if (!empty($this->plugin_settings['bot']['status']) && $this->plugin_settings['bot']['status'] == 1) {
-          $styles['bot'] = WPMM_CSS_URL . 'style.bot' . WPMM_ASSETS_SUFFIX . '.css';
+          $styles['bot'] = WEBPR_MM__CSS_URL . 'style.bot' . WEBPR_MM__ASSETS_SUFFIX . '.css';
           $body_classes .= ' bot';
         }
         $styles = apply_filters('wpmm_styles', $styles);
@@ -619,7 +619,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
         } else if (file_exists(WP_CONTENT_DIR . '/wp-maintenance-mode.php')) { // check `wp-content` folder
           include_once WP_CONTENT_DIR . '/wp-maintenance-mode.php';
         } else { // load from plugin `views` folder
-          include_once WPMM_VIEWS_PATH . 'maintenance.php';
+          include_once WEBPR_MM__VIEWS_PATH . 'maintenance.php';
         }
         ob_flush();
 
@@ -826,7 +826,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
       }
 
       // show google analytics javascript snippet
-      include_once WPMM_VIEWS_PATH . 'google-analytics.php';
+      include_once WEBPR_MM__VIEWS_PATH . 'google-analytics.php';
     }
 
     /**
@@ -890,17 +890,17 @@ if (!class_exists('WP_Maintenance_Mode')) {
         $send_to = !empty($this->plugin_settings['modules']['contact_email']) ? stripslashes($this->plugin_settings['modules']['contact_email']) : get_option('admin_email');
         $subject = apply_filters('wpmm_contact_subject', __('Message via contact', $this->plugin_slug));
         $headers = apply_filters('wpmm_contact_headers', array('Reply-To: ' . sanitize_text_field($_POST['email'])));
-        $template_path = apply_filters('wpmm_contact_template', WPMM_VIEWS_PATH . 'contact.php');
+        $template_path = apply_filters('wpmm_contact_template', WEBPR_MM__VIEWS_PATH . 'contact.php');
 
         ob_start();
         include_once $template_path;
         $message = ob_get_clean();
 
         // filters
-        add_filter('wp_mail_content_type', function() {
+        add_filter('wp_mail_content_type', function () {
           return "text/html";
         });
-        add_filter('wp_mail_from_name', function() {
+        add_filter('wp_mail_from_name', function () {
           return sanitize_text_field($_POST["name"]);
         });
 
@@ -914,10 +914,10 @@ if (!class_exists('WP_Maintenance_Mode')) {
 
     public function get_creator($use_registered = false)
     {
-      $href = $this->plugin_settings['design']['creator_href'];
-      $src = $this->plugin_settings['design']['creator_src'];
-      $alt = $this->plugin_settings['design']['creator_alt'];
-      $target = $this->plugin_settings['design']['creator_target'];
+      $href = $this->plugin_settings['design']['info_src'];
+      $src = $this->plugin_settings['design']['info_logo_src'];
+      $alt = $this->plugin_settings['design']['info_alt'];
+      $target = $this->plugin_settings['design']['info_target'];
       // $href = 'https://webpremiere.de/';
       // $src = 'https://files.doojoo.de/f/4720e7190ac049c49089/?dl=1';
       // $alt = 'WebPremiere';
