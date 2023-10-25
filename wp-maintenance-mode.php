@@ -6,7 +6,7 @@
  * Plugin Name: WP Maintenance Mode
  * Plugin URI: https://webpremiere.de/
  * Description: Adds a splash page to your site that lets visitors know your site is down for maintenance.
- * Version: 3.0.4
+ * Version: 30.0.4
  * Author: Axel Nitzschner
  * Author URI: https://webpremiere.de/
  * GitHub Plugin URI: https://github.com/anito/wp-maintenance-mode
