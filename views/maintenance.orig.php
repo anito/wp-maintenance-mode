@@ -30,15 +30,15 @@
   <?php do_action('wpmm_after_body'); ?>
 
   <div class="wrap">
-    <?php if (!empty($heading)) { ?><h1><?php echo stripslashes($heading); ?></h1><?php } ?>
+    <?php if (!empty($heading)) { ?>
+      <h1><?php echo stripslashes($heading); ?></h1>
+    <?php } ?>
 
     <?php
     // If bot is enabled no text will be shown
-    if (!empty($text) && $this->plugin_settings['bot']['status'] === 0) {
-      echo "<h2>" . stripslashes($text) . "</h2>";
-    }
-    ?>
-
+    if (!empty($text) && $this->plugin_settings['bot']['status'] === 0) { ?>
+      <h2 class="subheading"><?php echo stripslashes($text); ?></h2>
+    <?php } ?>
 
     <?php if (!empty($this->plugin_settings['bot']['status']) && $this->plugin_settings['bot']['status'] === 1) { ?>
   </div><!-- .wrap -->
