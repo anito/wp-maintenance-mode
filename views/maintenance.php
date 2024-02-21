@@ -55,7 +55,7 @@ $social_prefix = 'social_';
 
     <header class="header">
       <h1><?php echo $texts['header']; ?></h1>
-      <h2 class="subheading"><?php echo $texts['subheader']; ?></h2>
+      <div class="subheading"><?php echo $texts['subheader']; ?></div>
     </header>
 
     <!--START_TIMER_BLOCK-->
