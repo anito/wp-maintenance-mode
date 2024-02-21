@@ -5,7 +5,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
   class WP_Maintenance_Mode
   {
 
-    const VERSION = '3.0.4';
+    const VERSION = '3.0.5';
 
     protected $plugin_slug = 'wp-maintenance-mode';
     protected $plugin_settings;
@@ -47,7 +47,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
       }
     }
 
-    public static function get_instance()
+    public static function get_instance(): WP_Maintenance_Mode
     {
       if (null == self::$instance) {
         self::$instance = new self;
@@ -108,7 +108,7 @@ if (!class_exists('WP_Maintenance_Mode')) {
           'heading' => __('Maintenance mode', $this->plugin_slug),
           'heading_color' => '#ffffff',
           'text' => __('<p>Sorry for the inconvenience.<br />Our website is currently undergoing scheduled maintenance.<br />Thank you for your understanding.</p>', $this->plugin_slug),
-          'text_color' => '',
+          'text_color' => '#000000',
           'credits' => '<span>' . __('Credits') . ':</span>',
           'creator' => '<span>' . __('Creator') . ':</span>',
           'bg_type' => 'color',
@@ -918,9 +918,6 @@ if (!class_exists('WP_Maintenance_Mode')) {
       $src = $this->plugin_settings['design']['info_logo_src'];
       $alt = $this->plugin_settings['design']['info_alt'];
       $target = $this->plugin_settings['design']['info_target'];
-      // $href = 'https://webpremiere.de/';
-      // $src = 'https://files.doojoo.de/f/4720e7190ac049c49089/?dl=1';
-      // $alt = 'WebPremiere';
       $output = sprintf('<a href="%1$s" target=%2$s><img class="logo" src="%3$s" alt="%4$s"></a>', $href, $target, $src, $alt);
       if ($use_registered) {
         $output .= '<sup>&reg;</sup>';

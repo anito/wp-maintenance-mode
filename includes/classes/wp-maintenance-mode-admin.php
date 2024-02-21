@@ -6,11 +6,11 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
   {
 
     protected static $_instance = null;
-    protected $_plugin_slug;
-    protected $_plugin_settings;
-    protected $_plugin_default_settings;
-    protected $_plugin_basename;
-    protected $_plugin_screen_hook_suffix = null;
+    protected $plugin_slug;
+    protected $plugin_settings;
+    protected $plugin_default_settings;
+    protected $plugin_basename;
+    protected $plugin_screen_hook_suffix = null;
     private $dismissed_notices_key = 'wpmm_dismissed_notices';
 
     private function __construct()
@@ -313,7 +313,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             $_POST['options']['design']['heading'] = sanitize_text_field($_POST['options']['design']['heading']);
             if (!empty($_POST['options']['design']['heading_color'])) {
               $_POST['options']['design']['heading_color'] = sanitize_text_field($_POST['options']['design']['heading_color']);
-              $custom_css['heading_color'] = '.wrap h1 { color: ' . $_POST['options']['design']['heading_color'] . '; }';
+              $custom_css['heading_color'] = '.wrap h1 {color: ' . $_POST['options']['design']['heading_color'] . ';}';
             }
             add_filter('safe_style_css', array($this, 'add_safe_style_css')); // add before we save
             $_POST['options']['design']['text'] = wp_kses_post($_POST['options']['design']['text']);
@@ -326,30 +326,30 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
 
             if (!empty($_POST['options']['design']['text_color'])) {
               $_POST['options']['design']['text_color'] = sanitize_text_field($_POST['options']['design']['text_color']);
-              $custom_css['text_color'] = '.wrap h2 { color: ' . $_POST['options']['design']['text_color'] . '; }';
+              $custom_css['text_color'] = '.wrap h2 {color: ' . $_POST['options']['design']['text_color'] . ';}';
             }
 
             // BACKGROUND & CUSTOM CSS
             if (!empty($_POST['options']['design']['bg_overlay_color'])) {
               $_POST['options']['design']['bg_overlay_color'] = sanitize_text_field($_POST['options']['design']['bg_overlay_color']);
-              $custom_css['bg_overlay_color'] = 'body:after { background-color: ' . $_POST['options']['design']['bg_overlay_color'] . '; }';
+              $custom_css['bg_overlay_color'] = 'body:after {background-color: ' . $_POST['options']['design']['bg_overlay_color'] . ';}';
             }
             if (!empty($_POST['options']['design']['bg_type'])) {
               $_POST['options']['design']['bg_type'] = sanitize_text_field($_POST['options']['design']['bg_type']);
 
               if ($_POST['options']['design']['bg_type'] == 'color' && !empty($_POST['options']['design']['bg_color'])) {
                 $_POST['options']['design']['bg_color'] = sanitize_text_field($_POST['options']['design']['bg_color']);
-                $custom_css['bg_color'] = 'body { background-color: ' . $_POST['options']['design']['bg_color'] . '; }';
+                $custom_css['bg_color'] = 'body {background-color: ' . $_POST['options']['design']['bg_color'] . ';}';
               }
 
               if ($_POST['options']['design']['bg_type'] == 'custom' && !empty($_POST['options']['design']['bg_custom'])) {
                 $_POST['options']['design']['bg_custom'] = esc_url($_POST['options']['design']['bg_custom']);
-                $custom_css['bg_url'] = '.background { background: url(' . $_POST['options']['design']['bg_custom'] . ') no-repeat center top fixed; background-size: cover; }';
+                $custom_css['bg_url'] = '.background {background: url(' . $_POST['options']['design']['bg_custom'] . ') no-repeat center top fixed; background-size: cover; }';
               }
 
               if ($_POST['options']['design']['bg_type'] == 'predefined' && !empty($_POST['options']['design']['bg_predefined'])) {
                 $_POST['options']['design']['bg_predefined'] = sanitize_text_field($_POST['options']['design']['bg_predefined']);
-                $custom_css['bg_url'] = '.background { background: url(' . esc_url(WEBPR_MM__URL . 'assets/images/backgrounds/' . $_POST['options']['design']['bg_predefined']) . ') no-repeat center top fixed; background-size: cover; }';
+                $custom_css['bg_url'] = '.background {background: url(' . esc_url(WEBPR_MM__URL . 'assets/images/backgrounds/' . $_POST['options']['design']['bg_predefined']) . ') no-repeat center top fixed; background-size: cover; }';
               }
             }
 
@@ -372,7 +372,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             $_POST['options']['modules']['countdown_details']['minutes'] = isset($_POST['options']['modules']['countdown_details']['minutes']) && is_numeric($_POST['options']['modules']['countdown_details']['minutes']) ? $_POST['options']['modules']['countdown_details']['minutes'] : 0;
             if (!empty($_POST['options']['modules']['countdown_color'])) {
               $_POST['options']['modules']['countdown_color'] = sanitize_text_field($_POST['options']['modules']['countdown_color']);
-              $custom_css['countdown_color'] = '.wrap .timer { color: ' . $_POST['options']['modules']['countdown_color'] . '; }';
+              $custom_css['countdown_color'] = '.wrap .timer {color: ' . $_POST['options']['modules']['countdown_color'] . ';}';
             }
 
             // SUBSCRIBE & CUSTOM CSS
@@ -380,7 +380,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             $_POST['options']['modules']['subscribe_text'] = sanitize_text_field($_POST['options']['modules']['subscribe_text']);
             if (!empty($_POST['options']['modules']['subscribe_text_color'])) {
               $_POST['options']['modules']['subscribe_text_color'] = sanitize_text_field($_POST['options']['modules']['subscribe_text_color']);
-              $custom_css['subscribe_text_color'] = '.wrap h3, .wrap .subscribe_wrapper { color: ' . $_POST['options']['modules']['subscribe_text_color'] . '; }';
+              $custom_css['subscribe_text_color'] = '.wrap h3, .wrap .subscribe_wrapper {color: ' . $_POST['options']['modules']['subscribe_text_color'] . ';}';
             }
 
             // SOCIAL NETWORKS
@@ -419,7 +419,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
 
             if (!empty($_POST['options']['bot']['avatar'])) {
               $_POST['options']['bot']['avatar'] = esc_url($_POST['options']['bot']['avatar']);
-              $custom_css['bot-avatar'] = ".bot-avatar { background-image: url('{$_POST['options']['bot']['avatar']}');}";
+              $custom_css['bot-avatar'] = ".bot-avatar {background-image: url('{$_POST['options']['bot']['avatar']}');}";
             }
 
             $_POST['options']['bot']['messages']['01'] = sanitize_text_field($_POST['options']['bot']['messages']['01']);
@@ -450,7 +450,6 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             }
             break;
           case 'gdpr':
-            //$custom_css = array();
 
             $_POST['options']['gdpr']['status'] = (int)$_POST['options']['gdpr']['status'];
             $_POST['options']['gdpr']['policy_page_label'] = sanitize_text_field($_POST['options']['gdpr']['policy_page_label']);
@@ -495,7 +494,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
     {
       $data = "var botName = \"{$messages['name']}\",\n"
         . "botAvatar = \"{$messages['avatar']}\",\n"
-        . "conversationData = {\"homepage\": {1: { \"statement\": [ \n";
+        . "conversationData = {\"homepage\": {1: {\"statement\": [ \n";
       $data .= (!empty($messages['messages']['01'])) ? "\"{$messages['messages']['01']}\", \n" : '';
       $data .= (!empty($messages['messages']['02'])) ? "\"{$messages['messages']['02']}\", \n" : '';
       $data .= (!empty($messages['messages']['03'])) ? "\"{$messages['messages']['03']}\", \n" : '';
@@ -505,11 +504,11 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
       $data .= (!empty($messages['messages']['06'])) ? "\"{$messages['messages']['06']}\", \n" : '';
       $data .= (!empty($messages['messages']['07'])) ? "\"{$messages['messages']['07']}\", \n" : '';
       $data .= "];},\"options\": [{ \"choice\": \"{$messages['responses']['02_1']}\",\"consequence\": 1.4},{ \n"
-        . "\"choice\": \"{$messages['responses']['02_2']}\",\"consequence\": 1.5}]},1.4: { \"statement\": [ \n";
+        . "\"choice\": \"{$messages['responses']['02_2']}\",\"consequence\": 1.5}]},1.4: {\"statement\": [ \n";
       $data .= (!empty($messages['messages']['08_1'])) ? "\"{$messages['messages']['08_1']}\", \n" : '';
       $data .= "], \"email\": {\"email\": \"email\", \"consequence\": 1.6}},1.5: {\"statement\": function(context) {return [ \n";
       $data .= (!empty($messages['messages']['08_2'])) ? "\"{$messages['messages']['08_2']}\", \n" : '';
-      $data .= "];}},1.6: { \"statement\": [ \n";
+      $data .= "];}},1.6: {\"statement\": [ \n";
       $data .= (!empty($messages['messages']['09'])) ? "\"{$messages['messages']['09']}\", \n" : '';
       $data .= (!empty($messages['messages']['10'])) ? "\"{$messages['messages']['10']}\", \n" : '';
       $data .= "]}}};";
