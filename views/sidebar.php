@@ -11,7 +11,7 @@
           ?>
         </li>
         <li><?php _e('Author', $this->plugin_slug); ?>: <?php echo !empty($plugin_data['AuthorName']) ? $plugin_data['AuthorName'] : ''; ?></li>
-        <li><?php _e('Website', $this->plugin_slug); ?>: <?php echo !empty($plugin_data['AuthorURI']) ? '<a href="' . $plugin_data['AuthorURI'] . WEBPR_MM__AUTHOR_UTM . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
+        <li><?php _e('Website', $this->plugin_slug); ?>: <?php echo !empty($plugin_data['AuthorURI']) ? '<a href="' . $plugin_data['AuthorURI'] . WEBPR_MM__AUTHOR . '" target="_blank">' . $plugin_data['AuthorName'] . '</a>' : ''; ?></li>
         <li><?php _e('Twitter', $this->plugin_slug); ?>: <?php echo !empty($plugin_data['Twitter']) ? '<a href="http://twitter.com/' . $plugin_data['Twitter'] . '" target="_blank">@' . $plugin_data['Twitter'] . '</a>' : ''; ?></li>
         <li><?php _e('GitHub', $this->plugin_slug); ?>: <?php echo !empty($plugin_data['GitHub Plugin URI']) ? '<a href="' . $plugin_data['GitHub Plugin URI'] . '" target="_blank">' . basename($plugin_data['GitHub Plugin URI']) . '</a>' : ''; ?></li>
       </ul>
@@ -30,7 +30,7 @@
           <?php
           foreach ($banners['product'] as $item) {
             if ($item['utm']) {
-              $item['link'] = $item['link'] . WEBPR_MM__AUTHOR_UTM;
+              $item['link'] = $item['link'] . WEBPR_MM__AUTHOR;
             }
 
             printf('<li><a href="%s" target="_blank" title="%s"><img src="%s" alt="%s" width="280" height="160" /></a></li>', $item['link'], $item['title'], $item['image'], $item['title']);
@@ -51,7 +51,7 @@
           <?php
           foreach ($banners['resource'] as $item) {
             if ($item['utm']) {
-              $item['link'] = $item['link'] . WEBPR_MM__AUTHOR_UTM;
+              $item['link'] = $item['link'] . WEBPR_MM__AUTHOR;
             }
 
             printf('<li><a href="%s" target="_blank" title="%s"><img src="%s" alt="%s" width="280" height="160" /></a></li>', $item['link'], $item['title'], $item['image'], $item['title']);
