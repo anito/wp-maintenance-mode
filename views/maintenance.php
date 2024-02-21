@@ -81,7 +81,7 @@ $social_prefix = 'social_';
     <!--END_TIMER_BLOCK-->
 
     <!--START_ADMIN_LINK_BLOCK-->
-    <section class="admin-link" style="margin: 0 auto;">
+    <section class="admin-link" style="margin: 0 0 auto; text-align: center;">
       <?php if ($this->plugin_settings['general']['admin_link']) : ?>
         <span class="">
           <a class="admin-link" href="<?php echo admin_url(); ?>" target="_self" title="Admin Dashboard"><?php echo __('Login', $this->plugin_slug); ?></a>
