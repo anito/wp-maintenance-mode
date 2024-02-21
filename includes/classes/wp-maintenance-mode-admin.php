@@ -326,7 +326,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
 
             if (!empty($_POST['options']['design']['text_color'])) {
               $_POST['options']['design']['text_color'] = sanitize_text_field($_POST['options']['design']['text_color']);
-              $custom_css['text_color'] = '.wrap h2 {color: ' . $_POST['options']['design']['text_color'] . ';}';
+              $custom_css['text_color'] = '.wrap .subheading {color: ' . $_POST['options']['design']['text_color'] . ';}';
             }
 
             // BACKGROUND & CUSTOM CSS
