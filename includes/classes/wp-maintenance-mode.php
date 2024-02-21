@@ -530,21 +530,21 @@ if (!class_exists('WP_Maintenance_Mode')) {
         // META STUFF
         $title = !empty($this->plugin_settings['design']['title']) ? $this->plugin_settings['design']['title'] : get_bloginfo('name') . ' - ' . __('Maintenance Mode', $this->plugin_slug);
         $title = apply_filters('wm_title', $title); // this hook will be removed in the next versions
-        $title = apply_filters('wpmm_meta_title', $title);
+        $texts['title'] = apply_filters('wpmm_meta_title', $title);
 
         $robots = $this->plugin_settings['general']['meta_robots'] == 1 ? 'noindex, nofollow' : 'index, follow';
-        $robots = apply_filters('wpmm_meta_robots', $robots);
+        $head['robots'] = apply_filters('wpmm_meta_robots', $robots);
 
         $author = apply_filters('wm_meta_author', get_bloginfo('name')); // this hook will be removed in the next versions
-        $author = apply_filters('wpmm_meta_author', get_bloginfo('name'));
+        $head['author'] = apply_filters('wpmm_meta_author', get_bloginfo('name'));
 
         $description = get_bloginfo('name') . ' - ' . get_bloginfo('description');
         $description = apply_filters('wm_meta_description', $description); // this hook will be removed in the next versions
-        $description = apply_filters('wpmm_meta_description', $description);
+        $head['description'] = apply_filters('wpmm_meta_description', $description);
 
         $keywords = __('Maintenance Mode', $this->plugin_slug);
         $keywords = apply_filters('wm_meta_keywords', $keywords); // this hook will be removed in the next versions
-        $keywords = apply_filters('wpmm_meta_keywords', $keywords);
+        $head['keywords'] = apply_filters('wpmm_meta_keywords', $keywords);
 
         // CSS STUFF
         $body_classes = !empty($this->plugin_settings['design']['bg_type']) && $this->plugin_settings['design']['bg_type'] != 'color' ? 'background' : '';
@@ -556,10 +556,10 @@ if (!class_exists('WP_Maintenance_Mode')) {
         // CONTENT
         $heading = !empty($this->plugin_settings['design']['heading']) ? $this->plugin_settings['design']['heading'] : '';
         $heading = apply_filters('wm_heading', $heading); // this hook will be removed in the next versions
-        $heading = apply_filters('wpmm_heading', $heading);
+        $texts['heading'] = apply_filters('wpmm_heading', $heading);
 
         $text = !empty($this->plugin_settings['design']['text']) ? $this->plugin_settings['design']['text'] : '';
-        $text = apply_filters('wpmm_text', do_shortcode($text));
+        $texts['subheading'] = apply_filters('wpmm_text', do_shortcode($text));
 
         $credits = !empty($this->plugin_settings['design']['credits']) ? $this->plugin_settings['design']['credits'] : '';
         // $credits = apply_filters('wpmm_text', do_shortcode($credits));
@@ -914,11 +914,14 @@ if (!class_exists('WP_Maintenance_Mode')) {
 
     public function get_creator($use_registered = false)
     {
-      $href = $this->plugin_settings['design']['info_src'];
+      $output = '';
       $src = $this->plugin_settings['design']['info_logo_src'];
-      $alt = $this->plugin_settings['design']['info_alt'];
-      $target = $this->plugin_settings['design']['info_target'];
-      $output = sprintf('<a href="%1$s" target=%2$s><img class="logo" src="%3$s" alt="%4$s"></a>', $href, $target, $src, $alt);
+      if($src) {
+        $href = $this->plugin_settings['design']['info_src'];
+        $alt = $this->plugin_settings['design']['info_alt'];
+        $target = $this->plugin_settings['design']['info_target'];
+        $output .= sprintf('<a href="%1$s" target=%2$s><img class="logo" src="%3$s" alt="%4$s"></a>', $href, $target, $src, $alt);
+      }
       if ($use_registered) {
         $output .= '<sup>&reg;</sup>';
       }
