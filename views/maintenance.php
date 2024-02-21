@@ -1,9 +1,5 @@
 <?php
 
-$texts['title'] = $title;
-$texts['header'] = $heading;
-$texts['subheader'] = $text;
-
 $days = $this->plugin_settings['modules']['countdown_details']['days'];
 $hours = $this->plugin_settings['modules']['countdown_details']['hours'];
 $minutes = $this->plugin_settings['modules']['countdown_details']['minutes'];
