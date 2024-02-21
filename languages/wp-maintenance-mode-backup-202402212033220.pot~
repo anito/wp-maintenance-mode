@@ -28,6 +28,9 @@ msgstr ""
 "X-Loco-Template: languages/wp-maintenance-mode-de_DE.po"
 
 #. Description of the plugin
+msgctxt ""
+"Fügt eine Übergangsseite hinzu um deine Besucher deine Besucher darüber zu "
+"informieren, dass die Seite gerade gewartet wird."
 msgid ""
 "Adds a splash page to your site that lets visitors know your site is down "
 "for maintenance."
@@ -43,6 +46,7 @@ msgid "https://webpremiere.de/"
 msgstr ""
 
 #: views/loginform.php:8
+msgctxt "Anmelden"
 msgid "Login"
 msgstr ""
 
