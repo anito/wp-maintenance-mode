@@ -50,8 +50,8 @@ $social_prefix = 'social_';
   <div class="container wrap">
 
     <header class="header">
-      <h1><?php echo $texts['header']; ?></h1>
-      <div class="subheading"><?php echo $texts['subheader']; ?></div>
+      <h1 class="heading"><?php echo $texts['heading']; ?></h1>
+      <div class="subheading"><?php echo $texts['subheading']; ?></div>
     </header>
 
     <!--START_TIMER_BLOCK-->
