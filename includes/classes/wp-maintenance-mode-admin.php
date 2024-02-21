@@ -313,7 +313,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             $_POST['options']['design']['heading'] = sanitize_text_field($_POST['options']['design']['heading']);
             if (!empty($_POST['options']['design']['heading_color'])) {
               $_POST['options']['design']['heading_color'] = sanitize_text_field($_POST['options']['design']['heading_color']);
-              $custom_css['heading_color'] = '.wrap h1 {color: ' . $_POST['options']['design']['heading_color'] . ';}';
+              $custom_css['heading_color'] = '* {--color:' . $_POST['options']['design']['heading_color'] . '} .wrap h1 {color: ' . $_POST['options']['design']['heading_color'] . ';}';
             }
             add_filter('safe_style_css', array($this, 'add_safe_style_css')); // add before we save
             $_POST['options']['design']['text'] = wp_kses_post($_POST['options']['design']['text']);
