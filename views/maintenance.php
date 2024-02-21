@@ -84,7 +84,7 @@ $social_prefix = 'social_';
     <section class="admin-link" style="margin: 0 auto;">
       <?php if ($this->plugin_settings['general']['admin_link']) : ?>
         <span class="">
-          <a class="admin-link" href="<?php echo admin_url('wp-login.php'); ?>" target="_self" title="Admin Dashboard"><?php echo __('Login', $this->plugin_slug); ?></a>
+          <a class="admin-link" href="<?php echo admin_url(); ?>" target="_self" title="Admin Dashboard"><?php echo __('Login', $this->plugin_slug); ?></a>
         <?php endif ?>
     </section>
     <!--END_ADMIN_LINK_BLOCK-->
