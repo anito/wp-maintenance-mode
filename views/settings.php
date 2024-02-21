@@ -252,9 +252,9 @@
             <table class="form-table">
               <tbody>
                 <tr>
-                  <th scope="row"><label for="options[design][info_alt]"><?php _e('Company Name', $this->plugin_slug); ?></label></th>
+                  <th scope="row"><label for="options[design][creator]"><?php _e('Company Name', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['info_alt'])); ?>" name="options[design][info_alt]" class="" />
+                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['creator'])); ?>" name="options[design][creator]" class="" />
                     <p class="description"><?php _e('Company name used for alt attribute', $this->plugin_slug); ?></p>
                   </td>
                 </tr>

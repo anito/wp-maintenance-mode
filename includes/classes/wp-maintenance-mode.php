@@ -914,16 +914,16 @@ if (!class_exists('WP_Maintenance_Mode')) {
 
     public function get_creator($use_registered = false)
     {
-      $output = '';
+      $output = $this->plugin_settings['design']['creator'];
       $src = $this->plugin_settings['design']['info_logo_src'];
       if($src) {
         $href = $this->plugin_settings['design']['info_src'];
-        $alt = $this->plugin_settings['design']['info_alt'];
+        $alt = $this->plugin_settings['design']['creator'];
         $target = $this->plugin_settings['design']['info_target'];
         $output .= sprintf('<a href="%1$s" target=%2$s><img class="logo" src="%3$s" alt="%4$s"></a>', $href, $target, $src, $alt);
-      }
-      if ($use_registered) {
-        $output .= '<sup>&reg;</sup>';
+        if ($use_registered) {
+          $output .= '<sup>&reg;</sup>';
+        }
       }
       return $output;
     }

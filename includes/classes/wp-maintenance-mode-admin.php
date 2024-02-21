@@ -318,7 +318,7 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
             add_filter('safe_style_css', array($this, 'add_safe_style_css')); // add before we save
             $_POST['options']['design']['text'] = wp_kses_post($_POST['options']['design']['text']);
             $_POST['options']['design']['credits'] = wp_kses_post($_POST['options']['design']['credits']);
-            $_POST['options']['design']['info_alt'] = wp_kses_post($_POST['options']['design']['info_alt']);
+            $_POST['options']['design']['creator'] = wp_kses_post($_POST['options']['design']['creator']);
             $_POST['options']['design']['info_logo_src'] = wp_kses_post($_POST['options']['design']['info_logo_src']);
             $_POST['options']['design']['info_bg_src'] = wp_kses_post($_POST['options']['design']['info_bg_src']);
             $_POST['options']['design']['info_target'] = wp_kses_post($_POST['options']['design']['info_target']);
