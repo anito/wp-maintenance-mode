@@ -89,12 +89,8 @@
                 <tr valign="top">
                   <th scope="row"><label for="options[general][exclude]"><?php _e('Exclude', $this->plugin_slug); ?></label></th>
                   <td>
-                    <textarea rows="7" name="options[general][exclude]" style="width: 625px;">
-                    <?php
-                    if (!empty($this->plugin_settings['general']['exclude']) && is_array($this->plugin_settings['general']['exclude'])) {
-                      echo implode("\n", stripslashes_deep($this->plugin_settings['general']['exclude']));
-                    }
-                    ?></textarea>
+                    <?php $exclude = !empty($this->plugin_settings['general']['exclude']) ? implode("\n", stripslashes_deep($this->plugin_settings['general']['exclude'])) : ''; ?>
+                    <textarea rows="7" name="options[general][exclude]" style="width: 625px;"><?php echo $exclude; ?></textarea>
                     <p class="description"><?php _e('Exclude feed, pages, archives or IPs from maintenance mode. Add one slug / IP per line!', $this->plugin_slug); ?></p>
                   </td>
                 </tr>
