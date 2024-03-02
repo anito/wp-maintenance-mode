@@ -78,7 +78,7 @@ $social_prefix = 'social_';
         startTimer(<?php echo $days . ',' . $hours . ',' . $minutes . ',' . strtotime($countdown_start) . ',' . time(); ?> - Math.floor(Date.now() / 1000));
       </script>
     <?php endif; ?>
-    <!--END_TIMER__BLOCK-->
+    <!--END_TIMER_BLOCK-->
 
     <!--START_ADMIN_LINK_BLOCK-->
     <section class="admin-link" style="margin: 0 0 auto; text-align: center;">
