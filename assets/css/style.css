@@ -30,6 +30,7 @@ span {
   border: 0;
   font: inherit;
   vertical-align: baseline;
+  color: var(--color, #000);
 }
 article,
 aside,
