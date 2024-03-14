@@ -1,7 +1,8 @@
 <div class="wrap">
   <h2 class="wpmm-title"><?php echo get_admin_page_title(); ?></h2>
 
-  <?php if (!empty($_POST)) { ?>
+  <?php if (!empty($_POST))
+  { ?>
     <div class="updated settings-error" id="setting-error-settings_updated">
       <p><strong><?php _e('Settings saved.', $this->plugin_slug); ?></strong></p>
     </div>
@@ -42,8 +43,10 @@
                   <td>
                     <select name="options[general][backend_role][]" multiple="multiple" class="chosen-select" data-placeholder="<?php _e('Select role(s)', $this->plugin_slug); ?>">
                       <?php
-                      foreach ($wp_roles->roles as $role => $details) {
-                        if ($role == 'administrator') {
+                      foreach ($wp_roles->roles as $role => $details)
+                      {
+                        if ($role == 'administrator')
+                        {
                           continue;
                         }
                       ?>
@@ -58,8 +61,10 @@
                   <td>
                     <select name="options[general][frontend_role][]" multiple="multiple" class="chosen-select" data-placeholder="<?php _e('Select role(s)', $this->plugin_slug); ?>">
                       <?php
-                      foreach ($wp_roles->roles as $role => $details) {
-                        if ($role == 'administrator') {
+                      foreach ($wp_roles->roles as $role => $details)
+                      {
+                        if ($role == 'administrator')
+                        {
                           continue;
                         }
                       ?>
@@ -140,8 +145,8 @@
                   <td>
                     <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['heading'])); ?>" name="options[design][heading]" />
                     <div style="margin-top: 20px;">
-                      <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['heading_color'])); ?>" name="options[design][heading_color]" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['heading_color'])); ?>" class="color_picker_trigger" />
-                    </span>
+                      <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['heading_color'])); ?>" name="options[design][heading_color]" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['heading_color'])); ?>" class="color-picker" />
+                      </span>
                   </td>
                 </tr>
                 <tr valign="top">
@@ -159,7 +164,7 @@
                     ));
                     ?>
                     <br />
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['text_color'])); ?>" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['text_color'])); ?>" name="options[design][text_color]" class="color_picker_trigger" />
+                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['text_color'])); ?>" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['text_color'])); ?>" name="options[design][text_color]" class="color-picker" />
                     <p><?php __('This text will not be shown when the bot feature is enabled.', $this->plugin_slug); ?></p>
                   </td>
                 </tr>
@@ -183,13 +188,18 @@
                 <tr valign="top" class="design_bg_types <?php echo $this->plugin_settings['design']['bg_type'] != 'color' ? 'hidden' : ''; ?>" id="show_color">
                   <th scope="row"><label for="options[design][bg_color]"><?php _e('Choose color', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" value="<?php echo $this->plugin_settings['design']['bg_color']; ?>" data-default-color="<?php echo $this->plugin_settings['design']['bg_color']; ?>" name="options[design][bg_color]" class="color_picker_trigger" />
+                    <input type="text" value="<?php echo $this->plugin_settings['design']['bg_color']; ?>" data-default-color="<?php echo $this->plugin_settings['design']['bg_color']; ?>" name="options[design][bg_color]" class="color-picker" />
                   </td>
                 </tr>
                 <tr valign="top" class="design_bg_types <?php echo $this->plugin_settings['design']['bg_type'] != 'custom' ? 'hidden' : ''; ?>" id="show_custom">
                   <th scope="row"><label for="options[design][bg_custom]"><?php _e('Upload background', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['bg_custom'])); ?>" name="options[design][bg_custom]" class="upload_image_url" />
+                    <input type="hidden" value="<?php echo esc_attr(stripslashes($this->plugin_settings['design']['bg_custom'])); ?>" name="options[design][bg_custom]" id="options[design][bg_custom]" class="upload_image_url" />
+                    <div class="image-preview" style="position: relative; display: inline-block;">
+                      <?php $img_source = esc_attr(stripslashes($this->plugin_settings['design']['bg_custom'])); ?>
+                      <img src="<?php echo $img_source; ?>" width="100" id="image_bg_custom" />
+                      <div role="button" class="cancel" style="position: absolute; top: 0px; right: 5px; color: red; font-weight: 600;" id="cancel_button">x</div>
+                    </div>
                     <input type="button" value="Upload" class="button" id="upload_image_trigger" />
                     <p class="description"><?php _e('Backgrounds should have 1920x1280 px size.', $this->plugin_slug); ?></p>
                   </td>
@@ -197,7 +207,7 @@
                 <tr valign="top">
                   <th scope="row"><label for="options[design][bg_overlay_color]"><?php _e('Overlay Color', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" data-alpha-enabled="true" value="<?php echo sanitize_text_field($this->plugin_settings['design']['bg_overlay_color']); ?>" name="options[design][bg_overlay_color]" data-default-color="<?php echo sanitize_text_field($this->plugin_settings['design']['bg_overlay_color']); ?>" class="color_picker_trigger" />
+                    <input type="text" data-alpha-enabled="true" value="<?php echo sanitize_text_field($this->plugin_settings['design']['bg_overlay_color']); ?>" name="options[design][bg_overlay_color]" data-default-color="<?php echo sanitize_text_field($this->plugin_settings['design']['bg_overlay_color']); ?>" class="color-picker" />
                   </td>
                 </tr>
                 <tr>
@@ -226,7 +236,8 @@
                   <td>
                     <ul class="bg_list">
                       <?php
-                      foreach (glob(WEBPR_MM__PATH . 'assets/images/backgrounds/*_thumb.jpg') as $filename) {
+                      foreach (glob(WEBPR_MM__PATH . 'assets/images/backgrounds/*_thumb.jpg') as $filename)
+                      {
                         $file_thumb = basename($filename);
                         $file = str_replace('_thumb', '', $file_thumb);
                       ?>
@@ -322,7 +333,7 @@
                 <tr valign="top">
                   <th scope="row"><label for="options[modules][countdown_color]"><?php _e('Color', $this->plugin_slug); ?></label></th>
                   <td>
-                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['countdown_color'])); ?>" name="options[modules][countdown_color]" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['countdown_color'])); ?>" class="color_picker_trigger" />
+                    <input type="text" value="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['countdown_color'])); ?>" name="options[modules][countdown_color]" data-default-color="<?php echo esc_attr(stripslashes($this->plugin_settings['modules']['countdown_color'])); ?>" class="color-picker" />
                   </td>
                 </tr>
               </tbody>
@@ -585,3 +596,27 @@
     <?php include_once 'sidebar.php'; ?>
   </div>
 </div>
+
+<script>
+  jQuery(document).ready(function($) {
+
+    const placeholder = "<?php echo WEBPR_MM__URL . 'assets/images/placeholder.png'; ?>"
+
+    function init() {
+      const cancel_button = $('#cancel_button');
+      const image = $('#image_bg_custom');
+      cancel_button.on('click', function(e) {
+        image.attr('src', placeholder);
+        cancel_button.hide();
+      })
+      
+      $(document).on('selected:background', function(e, data) {
+        cancel_button.show();
+        image.attr('src', data.url);
+      })
+    }
+
+    init();
+
+  })
+</script>

@@ -98,12 +98,8 @@ if (!class_exists('WP_Maintenance_Mode_Admin')) {
       if ($this->plugin_screen_hook_suffix == $screen->id) {
         wp_enqueue_media();
         wp_enqueue_script($this->plugin_slug . '-admin-timepicker-addon-script', WEBPR_MM__JS_URL . 'jquery-ui-timepicker-addon' . WEBPR_MM__ASSETS_SUFFIX . '.js', array('jquery', 'jquery-ui-datepicker'), WP_Maintenance_Mode::VERSION);
-        wp_enqueue_script($this->plugin_slug . '-admin-script', WEBPR_MM__JS_URL . 'scripts-admin' . WEBPR_MM__ASSETS_SUFFIX . '.js', array('jquery', 'wp-color-picker'), WP_Maintenance_Mode::VERSION);
-        wp_enqueue_script($this->plugin_slug . '-admin-color-picker-alpha', WEBPR_MM__JS_URL . 'wp-color-picker-alpha' . WEBPR_MM__ASSETS_SUFFIX . '.js', array('wp-color-picker'), WP_Maintenance_Mode::VERSION);
-        wp_add_inline_script(
-          $this->plugin_slug . '-admin-color-picker-alpha',
-          'jQuery( function() { jQuery( ".color-picker" ).wpColorPicker(); } );'
-        );
+        wp_enqueue_script($this->plugin_slug . '-admin-script', WEBPR_MM__JS_URL . 'scripts-admin.js', array('jquery', 'wp-color-picker'), WP_Maintenance_Mode::VERSION);
+        wp_enqueue_script($this->plugin_slug . '-admin-color-picker-alpha', WEBPR_MM__JS_URL . 'wp-color-picker-alpha.min.js', array('wp-color-picker'), WP_Maintenance_Mode::VERSION);
 
         wp_enqueue_script($this->plugin_slug . '-admin-chosen', WEBPR_MM__JS_URL . 'chosen.jquery' . WEBPR_MM__ASSETS_SUFFIX . '.js', array(), WP_Maintenance_Mode::VERSION);
         wp_localize_script($this->plugin_slug . '-admin-script', 'wpmm_vars', array(
