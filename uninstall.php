@@ -34,4 +34,3 @@ if (is_multisite()) {
 } else {
     single_uninstall();
 }
-
